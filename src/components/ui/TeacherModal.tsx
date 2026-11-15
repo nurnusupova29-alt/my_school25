@@ -53,7 +53,7 @@ export const TeacherModal: React.FC = () => {
 
           {/* Motto */}
           {selectedTeacher.motto && (
-            <div className="bg-sky-50 border-l-3 border-sky-500 p-4 rounded-r-xl italic text-xs sm:text-sm text-sky-950 flex items-start gap-2.5">
+            <div className="bg-sky-50 border border-sky-200 p-4 rounded-xl italic text-xs sm:text-sm text-sky-950 flex items-start gap-2.5">
               <Quote className="w-4 h-4 text-sky-500 shrink-0 mt-0.5" />
               <span>{selectedTeacher.motto}</span>
             </div>
@@ -113,7 +113,7 @@ export const TeacherModal: React.FC = () => {
         <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex justify-end">
           <button
             onClick={() => setSelectedTeacher(null)}
-            className="px-5 py-2 rounded-lg bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors"
+            className="px-5 py-2 rounded-lg bg-sky-600 text-white text-xs font-semibold hover:bg-sky-500 transition-colors cursor-pointer"
           >
             Жабуу
           </button>

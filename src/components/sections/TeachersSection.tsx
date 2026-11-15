@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useSchool } from '../../context/SchoolContext';
 import { getTranslation } from '../../utils/translations';
-import { Teacher } from '../../types';
-import { GraduationCap, Award, BookOpen, ChevronRight, User, FileText, ExternalLink, Download, Clock } from 'lucide-react';
+import { Award, BookOpen, ChevronRight, User, FileText, ExternalLink, Download, Clock, Search } from 'lucide-react';
 
 interface VeteranTeacherRecord {
   docNumber: number;
@@ -130,13 +129,13 @@ export const TeachersSection: React.FC = () => {
   });
 
   return (
-    <section id="teachers" className="py-20 bg-gradient-to-b from-sky-50/70 via-sky-100/30 to-sky-50/70 border-b border-sky-200/90 scroll-mt-14">
+    <section id="teachers" className="py-24 bg-gradient-to-b from-[#F4F9FF] via-[#EAF4FF]/60 to-[#F4F9FF] border-b border-sky-200/80 scroll-mt-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-sky-900 bg-sky-100 border border-sky-300/80 px-3.5 py-1.5 rounded-full shadow-2xs">
-              <GraduationCap className="w-4 h-4 text-sky-700" />
+            <div className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] uppercase text-sky-800">
+              <span className="w-7 h-[1px] bg-sky-500" />
               <span>Педагогикалык Жамаат</span>
             </div>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-wide uppercase">
@@ -147,30 +146,30 @@ export const TeachersSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Quick Search */}
-          <div className="w-full md:w-72">
+          {/* Search */}
+          <div className="w-full md:w-72 relative">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
             <input
               type="text"
               placeholder="Мугалимди же предметти издөө..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-sky-200 bg-white text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all shadow-2xs"
             />
           </div>
         </div>
 
-        {/* Official Staff Composition Document Link */}
-        <div className="mb-8 bg-white/90 rounded-2xl border border-sky-200 p-5 sm:p-6 shadow-xs hover:border-sky-300 transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+        {/* Official Archival Staff Composition Document Banner */}
+        <div className="mb-10 bg-white rounded-3xl border border-sky-200/90 p-6 sm:p-7 shadow-[0_16px_45px_-22px_rgba(14,116,144,0.2)] flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-sky-100 border border-sky-200 text-sky-700 flex items-center justify-center shrink-0">
-              <FileText className="w-6 h-6" />
+            <div className="w-12 h-12 rounded-2xl bg-sky-100 border border-sky-200 text-sky-700 flex items-center justify-center shrink-0">
+              <FileText className="w-5 h-5" />
             </div>
             <div className="space-y-1.5">
-              <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold">
-                <span className="text-sky-800 bg-sky-100 px-2.5 py-0.5 rounded-md border border-sky-200">
-                  Расмий документ • PDF
-                </span>
-                <span className="text-slate-500">2026–2027-окуу жылы</span>
+              <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-sky-700">
+                <span>Расмий документ</span>
+                <span aria-hidden="true" className="text-slate-300">·</span>
+                <span className="font-mono text-slate-500">PDF · 2026–2027-окуу жылы</span>
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-slate-900 leading-snug">
                 <a
@@ -184,7 +183,7 @@ export const TeachersSection: React.FC = () => {
                 </a>
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                83 кызматкердин толук тизмеси, билими, педагогикалык стажы, окуткан сабактары жана жумалык сааттары (Магистр — 11, Жогорку билимдүү — 48, Билим берүүнүн мыктысы — 21).
+                83 кызматкердин расмий тизмеси · Магистр — 11 · Жогорку билимдүү — 48 · Билим берүүнүн мыктысы — 21
               </p>
             </div>
           </div>
@@ -194,9 +193,9 @@ export const TeachersSection: React.FC = () => {
               href={staffPdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-700 hover:bg-sky-600 text-white text-xs font-semibold transition-colors shadow-xs"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition-colors shadow-xs"
             >
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3.5 h-3.5 text-amber-200" />
               <span>Документти ачуу (PDF)</span>
             </a>
             <a
@@ -211,15 +210,15 @@ export const TeachersSection: React.FC = () => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 text-xs font-medium scrollbar-none">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-4 mb-8 text-xs font-medium scrollbar-none">
           {filterTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setFilterGroup(tab.id)}
-              className={`px-4 py-2 rounded-xl whitespace-nowrap transition-all ${
+              className={`px-4 py-2 rounded-xl whitespace-nowrap transition-all border cursor-pointer ${
                 filterGroup === tab.id
-                  ? 'bg-slate-900 text-white font-semibold shadow-xs'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                  ? 'bg-sky-600 text-white font-semibold border-sky-600 shadow-xs'
+                  : 'bg-white text-slate-600 border-sky-200/80 hover:border-sky-300 hover:text-sky-900'
               }`}
             >
               {tab.label}
@@ -232,20 +231,19 @@ export const TeachersSection: React.FC = () => {
           {filteredTeachers.map((teacher) => (
             <div
               key={teacher.id}
-              className="bg-slate-50/70 rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between group"
+              className="bg-white rounded-3xl border border-sky-200/80 overflow-hidden shadow-xs hover:-translate-y-1 hover:shadow-lg hover:border-sky-300 transition-all duration-200 flex flex-col justify-between group"
             >
               <div>
-                {/* Photo */}
-                <div className="relative aspect-square bg-slate-200 overflow-hidden">
+                <div className="relative aspect-square bg-slate-100 overflow-hidden">
                   <img
                     src={teacher.imageUrl}
                     alt={teacher.fullName}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-top group-hover:scale-104 transition-transform duration-300"
+                    className="w-full h-full object-cover object-top group-hover:scale-104 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <span className="text-[11px] font-semibold text-sky-300 block">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/15 to-transparent" />
+                  <div className="absolute bottom-3.5 left-4 right-4 text-white space-y-0.5">
+                    <span className="text-[11px] font-semibold text-amber-300 block tabular-nums">
                       {teacher.experienceYears} жылдык тажрыйба
                     </span>
                     <h3 className="font-display font-bold text-base leading-tight">
@@ -254,17 +252,16 @@ export const TeachersSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Details */}
-                <div className="p-4 space-y-2">
-                  <div className="text-xs text-slate-500 font-medium">
+                <div className="p-5 space-y-2.5">
+                  <div className="text-xs text-slate-500 font-medium line-clamp-1">
                     {teacher.role}
                   </div>
                   <div className="text-xs text-sky-800 font-semibold flex items-center gap-1.5">
                     <BookOpen className="w-3.5 h-3.5 text-sky-600 shrink-0" />
-                    <span>{teacher.subject}</span>
+                    <span className="truncate">{teacher.subject}</span>
                   </div>
                   {teacher.awards.length > 0 && (
-                    <div className="text-[11px] text-slate-600 flex items-start gap-1 pt-1">
+                    <div className="text-[11px] text-slate-600 flex items-start gap-1.5 pt-0.5">
                       <Award className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
                       <span className="line-clamp-1">{teacher.awards[0]}</span>
                     </div>
@@ -272,11 +269,10 @@ export const TeachersSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="p-4 pt-0">
+              <div className="p-5 pt-0">
                 <button
                   onClick={() => setSelectedTeacher(teacher)}
-                  className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-200 transition-colors shadow-2xs"
+                  className="w-full flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-sky-50 border border-sky-200/90 text-xs font-semibold text-sky-900 hover:bg-sky-600 hover:text-white hover:border-sky-600 transition-colors cursor-pointer"
                 >
                   <User className="w-3.5 h-3.5" />
                   <span>{t.viewProfile}</span>
@@ -293,27 +289,27 @@ export const TeachersSection: React.FC = () => {
           </div>
         )}
 
-        {/* Dedicated 35+ Years Experience Teachers Block (from official PDF) */}
+        {/* Dedicated 35+ Years Experience Honor Roll */}
         <div
           id="veteran-teachers"
-          className="mt-16 rounded-3xl bg-gradient-to-br from-sky-100/70 via-white to-sky-50/90 border border-sky-200 p-6 sm:p-8 shadow-sm"
+          className="mt-16 rounded-3xl bg-white border border-sky-200 p-7 sm:p-10 shadow-[0_20px_50px_-24px_rgba(14,116,144,0.18)]"
         >
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-6 border-b border-sky-100">
             <div className="space-y-2.5 max-w-3xl">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-amber-900 bg-amber-100/90 border border-amber-300/80 px-3.5 py-1.5 rounded-full">
-                <Award className="w-4 h-4 text-amber-600" />
-                <span>Мектеп сыймыгы • 35+ жылдык стаж</span>
+              <div className="flex items-center gap-2.5 text-xs font-semibold tracking-[0.2em] uppercase text-amber-700">
+                <Award className="w-4 h-4 text-amber-500" />
+                <span>Мектеп сыймыгы · 35+ жылдык эмгек стажы</span>
               </div>
               <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-wide uppercase">
                 35 ЖЫЛДАН ЖОГОРКУ СТАЖЫСЫ БАР АРДАГЕР МУГАЛИМДЕР
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                2026–2027-окуу жылындагы мектеп кызматкерлеринин сапаттык курамы боюнча расмий тизмеден 35 жылдан ашык педагогикалык эмгек стажы бар улуу устаттар.
+                2026–2027-окуу жылындагы мектеп кызматкерлеринин сапаттык курамы боюнча расмий тизмеден 35 жылдан ашык педагогикалык стажы бар улуу устаттар.
               </p>
             </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-900 text-white text-xs font-semibold shrink-0 self-start md:self-auto">
-              <Clock className="w-4 h-4 text-amber-300" />
-              <span>Бардыгы: {veteranTeachersOver35.length} мугалим</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 text-white text-xs font-semibold shrink-0 self-start md:self-auto shadow-xs">
+              <Clock className="w-4 h-4 text-amber-200" />
+              <span className="tabular-nums">Бардыгы: {veteranTeachersOver35.length} мугалим</span>
             </div>
           </div>
 
@@ -321,14 +317,14 @@ export const TeachersSection: React.FC = () => {
             {veteranTeachersOver35.map((vet) => (
               <div
                 key={vet.docNumber}
-                className="bg-white rounded-2xl border border-sky-200/80 p-5 shadow-2xs hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between gap-4"
+                className="bg-[#F8FBFF] rounded-2xl border border-sky-200/80 p-5 hover:bg-white hover:shadow-md hover:border-sky-300 transition-all flex flex-col justify-between gap-4"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[11px] font-mono font-semibold text-sky-700 bg-sky-50 border border-sky-200 px-2.5 py-0.5 rounded-md">
-                      Тизме №{vet.docNumber}
+                    <span className="text-[11px] font-mono font-semibold text-sky-700">
+                      №{vet.docNumber}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-900 bg-amber-100 border border-amber-300/80 px-2.5 py-1 rounded-lg">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 bg-amber-100/90 border border-amber-300/70 px-2.5 py-1 rounded-lg tabular-nums">
                       <Clock className="w-3.5 h-3.5 text-amber-600" />
                       {vet.pedExperience}
                     </span>
@@ -345,9 +341,9 @@ export const TeachersSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-600">
+                <div className="pt-3 border-t border-sky-100 text-[11px] text-slate-600">
                   <span className="text-slate-400">Билими: </span>
-                  <span className="font-medium text-slate-800">
+                  <span className="font-semibold text-slate-800">
                     {vet.education} ({vet.university})
                   </span>
                 </div>

@@ -27,7 +27,7 @@ const SchoolPortal: React.FC = () => {
   const { toastMessage } = useSchool();
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-amber-400 selection:text-slate-900">
+    <div className="min-h-screen bg-[#F6FAFF] text-slate-900 flex flex-col font-sans selection:bg-amber-300 selection:text-slate-950">
       {/* Top Header */}
       <Header />
 
@@ -61,8 +61,8 @@ const SchoolPortal: React.FC = () => {
 
       {/* Global Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-xs animate-bounce font-medium">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="fixed bottom-6 right-6 z-50 bg-white text-slate-900 px-5 py-3.5 rounded-2xl shadow-xl border border-sky-300 flex items-center gap-3 text-xs font-semibold animate-fade-in">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
